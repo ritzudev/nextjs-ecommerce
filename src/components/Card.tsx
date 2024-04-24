@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { useCatItemsStore } from '../store/carItems'
+import { toast } from 'sonner'
 
 interface Product {
   id: number
@@ -16,17 +17,29 @@ interface CardProps {
 }
 const Card = ({ product }: CardProps) => {
   const listItems = useCatItemsStore((state) => state.items)
-  const addItems = useCatItemsStore((state) => state.addItems)
+  const addItem = useCatItemsStore((state) => state.addItem)
+  const updateItems = useCatItemsStore((state) => state.updateItems)
   const [quantity, setQuantity] = useState(1)
   const { id, title, image, price, category } = product
 
-  const handleAddToCart = () => {
-    console.log('ssas')
-    if (listItems.length === 0) {
-      return addItems({ ...product, quantity })
-    }
+  const productExist = listItems.find((item) => item.id === id)
 
-    listItems.map((item) => {
+  const handleAddToCart = () => {
+    addItem({ ...product, quantity })
+    toast.success(
+      <div>
+        <span>Producto agregado correctamente</span>
+        <p>
+          {product.title} - Cant: {quantity}
+        </p>
+      </div>
+    )
+    /* if (productExist) {
+      updateItems(productExist.id, quantity)
+    } else {
+      addItems({ ...product, quantity })
+    } */
+    /* listItems.map((item) => {
       if (item.id === id) {
         console.log('tassxsa')
         return addItems({ ...product, quantity: item.quantity + quantity })
@@ -34,7 +47,7 @@ const Card = ({ product }: CardProps) => {
         console.log('tas')
         return addItems({ ...product, quantity })
       }
-    })
+    }) */
 
     // addItems({ ...product, quantity })
   }

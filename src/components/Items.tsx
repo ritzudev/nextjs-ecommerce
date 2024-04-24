@@ -14,7 +14,7 @@ export default async function Items() {
   //}, [])
 
   return (
-    <div className="grid grid-cols-1 gap-16 p-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <div className="grid gap-16 py-8 px-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {products.map((product: any) => {
         return <Card key={product.id} product={product} />
       })}

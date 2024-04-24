@@ -18,7 +18,7 @@ const Header = ({ name, image, email }: UserProps) => {
   return (
     <header className="">
       {/* Title and search */}
-      <div className="bg-[#1F1D2B] fixed flex w-[calc(100vw-3rem)] md:w-[calc(100vw-5rem)] lg:w-[calc(100vw-12rem)] gap-4 mb-6 flex-row md:justify-between md:items-center py-4 px-4 rounded-md">
+      <div className=" bg-[#1F1D2B] z-50 top-0 fixed flex w-full left-0 gap-4 mb-6 flex-row justify-between md:items-center py-4 px-10 md:px-20 rounded-md">
         <div className="flex gap-4 items-center">
           <img className="size-10 rounded-md" src={image} alt="" />
           <h1 className="text-2xl text-gray-300">{name}</h1>
@@ -35,7 +35,7 @@ const Header = ({ name, image, email }: UserProps) => {
         </div>
 
         <div className="inline-flex gap-2">
-          <form>
+          <form className="hidden lg:block">
             <div className="relative flex items-center w-full">
               {/* <RiSearch2Line className="absolute text-gray-300 -translate-y-1/2 left-3 top-1/2" /> */}
               🔎

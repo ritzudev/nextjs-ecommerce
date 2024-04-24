@@ -2,6 +2,9 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Provider from '@/context/Provider'
+import { Toaster } from 'sonner'
+import { getServerSession } from 'next-auth'
+import { redirect } from 'next/navigation'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,10 +18,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  /* const session = await getServerSession()
+  if (session) return redirect('/home')
+  return redirect('/login') */
   return (
     <html lang="en">
       <body className={inter.className}>
         <Provider>{children}</Provider>
+        <Toaster position="top-center" richColors duration={2000} closeButton />
       </body>
     </html>
   )
